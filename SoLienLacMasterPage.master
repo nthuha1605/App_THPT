@@ -1,0 +1,106 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="SoLienLacMasterPage.master.cs" Inherits="SoLienLacMasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Sổ liên lạc điện tử Việt Nhật</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="icon" type="image/x-icon" href="/admin_images/logo_mamnon.png" />
+    <link href="/css/themify-icons.css" rel="stylesheet" />
+    <link href="/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/jquery-3.5.1.min.js"></script>
+    <script src="/js/current-device.min.js"></script>
+    <script type="text/javascript">
+        window.ladi_viewport = function () {
+            var width =
+                window.outerWidth > 0 ? window.outerWidth : window.screen.width;
+            var widthDevice = width;
+            var is_desktop = width >= 768;
+            var content = "";
+            if (
+                typeof window.ladi_is_desktop == "undefined" ||
+                window.ladi_is_desktop == undefined
+            ) {
+                window.ladi_is_desktop = is_desktop;
+            }
+            if (!is_desktop) {
+                widthDevice = 520;
+            } else {
+                widthDevice = "device-width";
+                //widthDevice = 960;
+            }
+            content = "width=" + widthDevice + ", user-scalable=no";
+            var scale = 1;
+            if (
+                !is_desktop &&
+                widthDevice != window.screen.width &&
+                window.screen.width > 0
+            ) {
+                scale = window.screen.width / widthDevice;
+            }
+            if (scale != 1) {
+                content +=
+                    ", initial-scale=" +
+                    scale +
+                    ", minimum-scale=" +
+                    scale +
+                    ", maximum-scale=" +
+                    scale;
+            }
+            var docViewport = document.getElementById("viewport");
+            if (!docViewport) {
+                docViewport = document.createElement("meta");
+                docViewport.setAttribute("id", "viewport");
+                docViewport.setAttribute("name", "viewport");
+                document.head.appendChild(docViewport);
+            }
+            docViewport.setAttribute("content", content);
+        };
+        window.ladi_viewport();
+
+    </script>
+    <link href="/css/global.min.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="Header" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <asp:ContentPlaceHolder ID="Menu" runat="server">
+        </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="TopWrapper" runat="server">
+        </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="Wrapper" runat="server">
+        </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="BottomWrapper" runat="server">
+        </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="Footer" runat="server">
+        </asp:ContentPlaceHolder>
+        <div class="menu-bottom">
+
+            <div class="container-fluid">
+                <div class="row align-items-center justify-content-between link-menu">
+                    <a class="btn-menu active" id="itemHome" runat="server"><i class="ti-home"></i><span>Trang chủ</span></a>
+                    <a class="btn-menu" href="tel:02363889598"><i class="ti-headphone-alt"></i><span>Liên hệ</span></a>
+                    <a class="btn-menu home-center" href="/trang-chu">
+                        <img src="/images/TrangChu_SLLDTLienCap/logo_white.png" alt="Alternate Text" /></a>
+                    <a class="btn-menu" href="/website-vietnhatliencap-dia-chi"><i class="ti-location-pin"></i><span>Cơ sở</span></a>
+                    <a class="btn-menu" href="/website-vietnhatliencap-tai-khoan"><i class="ti-user"></i><span>Tài khoản</span></a>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
